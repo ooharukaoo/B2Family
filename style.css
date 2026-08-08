@@ -8,6 +8,11 @@ html {
 
 body {
     background-color: #ffffff;
+    overflow-x: hidden;
+    min-height: 100dvh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: minmax(0 1fr);
 }
 
 nav {
@@ -83,6 +88,41 @@ nav {
     cursor: default;
 }
 
+.search {
+    display: flex;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.search-box {
+    width: 100%;
+    padding: 10px 10px;
+    border: 2px solid #83936E;
+    border-radius: 10px;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 10px 10px;
+    border: 2px solid #83936E;
+    border-radius: 10px;
+    color: #000000;
+    transition: all ease-in-out 100ms;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background-color: #83936E;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all ease-in-out 100ms;
+}
+
 .card-container {
     padding: 40px 0 0 0;
     display: flex;
@@ -97,6 +137,7 @@ nav {
 
 .card img {
     border: 2px solid #83936E;
+    /* border-radius: 10px; */
     transition: all ease-in-out 100ms;
 }
 
@@ -133,6 +174,12 @@ nav {
     opacity: 0.8;
     cursor: pointer;
     transition: all ease-in-out 100ms;
+}
+
+.error {
+    padding: 40px 0;
+    font-size: 20px;
+    text-align: center;
 }
 
 footer {
@@ -226,6 +273,10 @@ footer .report:hover {
 @media (max-width: 768px) {
     nav {
         flex-wrap: wrap;
+
+        /* added by me*/
+        padding: 0px 20px;
+        /*  */
     }
 
     .hamburger {
@@ -236,6 +287,12 @@ footer .report:hover {
     .logo {
         height: 80px;
     }
+
+    /* added by me*/
+    .logo h3 {
+        font-size: 18px;
+    }
+    /*  */
 
     .nav-links {
         display: none;
@@ -255,4 +312,64 @@ footer .report:hover {
     .nav-links a:hover {
         color: #83936E;
     }
+
+    /* added by me */
+    .banner img {
+        width: 100%;
+        height: auto;
+    }
+
+    .recent-posts {
+        padding: 20px;
+    }
+
+    .recent-posts h1 {
+        font-size: 28px;
+    }
+
+    .card-container {
+        padding: 20px 0 0 0;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    .card-content h3 {
+        font-size: 18px;
+    }
+
+    .card-content h5 {
+        font-size: 14px;
+    }
+
+    .card-content a {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    footer {
+        padding: 20px;
+    }
+
+    footer img {
+        height: 60px;
+    }
+
+    footer h3 {
+        font-size: 18px;
+    }
+
+    footer i {
+        font-size: 24px;
+    }
+
+    footer p {
+        font-size: 14px;
+    }
+
+    footer .report {
+        font-size: 14px;
+    }
+    /*  */
 }

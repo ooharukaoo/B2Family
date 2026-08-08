@@ -44,3 +44,45 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+const searchInput = document.getElementById("searchInput");
+const filterButtons = document.querySelectorAll(".filter-btn");
+const cards = document.querySelectorAll(".card");
+const notFoundMessage = document.getElementById("notFoundMessage");
+
+filterButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        document.querySelector(".filter-btn.active").classList.remove("active");
+        btn.classList.add("active");
+        const filter = btn.getAttribute("data-filter");
+        updateGallery(filter, searchInput.value.toLowerCase());
+    });
+});
+
+searchInput.addEventListener("input", () => {
+    const filter = document
+        .querySelector(".filter-btn.active")
+        .getAttribute("data-filter");
+    updateGallery(filter, searchInput.value.toLowerCase());
+});
+
+function updateGallery(subject, searchTerm) {
+    let visibleCount = 0;
+
+    cards.forEach((item) => {
+        const matchesSubject =
+            subject === "all" || item.dataset.subject === subject;
+        const matchesSearch = item.dataset.title.toLowerCase().includes(searchTerm);
+
+        const isVisible = matchesSubject && matchesSearch;
+        item.style.display = isVisible ? "inline-block" : "none";
+            // matchesSubject && matchesSearch ? "inline-block" : "none";
+        
+        if (isVisible) {
+            visibleCount++;
+        }
+    });
+    if (notFoundMessage) {
+        notFoundMessage.style.display = visibleCount === 0 ? "block" : "none";
+    }
+}
